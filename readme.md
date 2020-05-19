@@ -62,12 +62,14 @@ Run the django project from the app folder with:
     $ sudo python3 manage.py runserver ip:80
 ```
 
-The ip bit in the command should be the local ip of the machine you are running this app on. If it is hard to find out your local network ip run those commands:
+The ip bit in the command should be the local ip of the machine you are running this app on. If it is hard to find out your local network ip run those command (returns 127.0.0.1 on machines having the hostname in /etc/hosts as 127.0.0.1):
 ```
     $ python3
     >>>import socket
     >>>socket.gethostbyname_ex(socket.gethostname())[-1][-1]
 ```
+
+Browse to /temp_website/settings.py and add your ip address to the ALLOWED_HOSTS list.
 
 ## Acknowledged problems
 
