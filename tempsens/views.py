@@ -4,22 +4,18 @@ from django.http import JsonResponse
 from django.views.generic import View
 from .tasks import *
 
-""", { 
+class Index(View):
+    path = "tempsens/index.html"
+    def get(self, request):
+        task_result = getInfo.delay()
+        info = task_result.get()
+        return render(request, self.path, { 
             'temperature': info["temp"],
             'humidity': info["hum"],
             'local_time': info["time"],
-         }
-"""
-
-class Index(View):
-    path = "tempsens/index.html"
-
-    def get(self, request):
-        #info = getInfo()
-        message = testTask.delay()
-        return render(request, self.path, {'string': message.get() })
+         })
 
 
 def disable_led(request):
-    #powerOffLed()
-    return redirect("")
+    powerOffLed.delay()
+    return redirect("/tempsens/")
