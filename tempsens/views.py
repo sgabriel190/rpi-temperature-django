@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.views.generic import View
+from .tasks import *
+
 #from .temp_sens import getInfo, powerOffLed
 """, { 
             'temperature': info["temp"],
@@ -15,7 +17,8 @@ class Index(View):
 
     def get(self, request):
         #info = getInfo()
-        return render(request, self.path)
+        message = testTask.delay()
+        return render(request, self.path, {'string': message.get() })
 
 
 def disable_led(request):
