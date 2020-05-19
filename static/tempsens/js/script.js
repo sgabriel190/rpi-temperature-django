@@ -20,7 +20,7 @@ function getCurrentTime() {
 
 function getTemperatureValue() {
     $.get("/tempsens/get_data_json/", (data, status) => {
-        document.getElementById("local_temperature").innerHTML = "Temperature: " + data.temp;
-        document.getElementById("local_humidity").innerHTML = "Humidity: " + data.hum;
+        document.getElementById("local_temperature").innerHTML = "Temperature: " + data.temp.toFixed(1);
+        document.getElementById("local_humidity").innerHTML = "Humidity: " + data.hum.toFixed(1);
     });
 }
