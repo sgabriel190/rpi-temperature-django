@@ -4,7 +4,6 @@ from django.http import JsonResponse
 from django.views.generic import View
 from .tasks import *
 
-#from .temp_sens import getInfo, powerOffLed
 """, { 
             'temperature': info["temp"],
             'humidity': info["hum"],
