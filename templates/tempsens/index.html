@@ -27,12 +27,12 @@
             <p id="local_humidity">Humidity: {% if humidity %} {{ humidity }} {% endif %} </p>
             <p id="local_time"></p>
             <form action="/tempsens/disable_led/" method="get">
-                <input type="submit" value="Disable led">
+                <input class="button" type="submit" value="Disable led">
             </form>
             <form action="/tempsens/power_led/" method="get">
-                <input type="submit" value="Power led">
+                <input class="button" type="submit" value="Power led">
             </form>
-             <button onclick="getTemperatureValue()">Update data</button> 
+             <button class="button" onclick="getTemperatureValue()">Update data</button> 
         </article>
     </main>
 
