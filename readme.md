@@ -1,5 +1,4 @@
 # Temperature sensor with led warning project
-## Author: Strilciuc Gabriel
 
 ## Description
 This application runs on a Raspberry Pi Zero W and a breadboard. The sensor data is displayed on a website powered by Django and Celery.
