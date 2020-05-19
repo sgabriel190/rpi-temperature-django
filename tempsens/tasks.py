@@ -28,6 +28,11 @@ def checkTemperature(temperature, humidity, led):
 def powerOffLed():
     GPIO.output(led, 1)
 
+# this method powers on the led
+@shared_task
+def powerOnLed():
+    GPIO.output(led, 0)
+
 # This method returns a dictionary for the html view with sensor values
 @shared_task
 def getInfo():

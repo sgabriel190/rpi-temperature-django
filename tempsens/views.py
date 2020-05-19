@@ -19,6 +19,10 @@ def disable_led(request):
     powerOffLed.delay()
     return redirect("/tempsens/")
 
+def power_led(request):
+    powerOnLed.delay()
+    return redirect("/tempsens/")
+
 def get_data_json(request):
     task_result = getInfo.delay()
     info = task_result.get()
