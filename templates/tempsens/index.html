@@ -32,6 +32,7 @@
             <form action="/tempsens/power_led/" method="get">
                 <input type="submit" value="Power led">
             </form>
+             <button onclick="getTemperatureValue()">Update data</button> 
         </article>
     </main>
 
@@ -41,7 +42,6 @@
     <script>
         getCurrentTime();
         setInterval(getCurrentTime, 1000);
-        setInterval(getTemperatureValue, 5000);
     </script>
 </body>
 
