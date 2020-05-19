@@ -8,12 +8,9 @@ This project can be ported to other Raspberry Pi machines with more hardware res
 
 The Django framework helps creating a quick web server and Celery is a Distributed Task Queue as the developer himself calls it, which helps the server-side tasks to be asynchronous and boost its response time.
 
-## Prerequisites
+## Getting Started
 
-
-
-
-## Installation
+## Installing
 
 This project uses django and celery, therefore the raspberry pi machine should have those installed. I recommend running them on python3. 
 
@@ -44,3 +41,22 @@ With those installed, proceed to install django and celery:
 
 I recommend installing those with sudo privileges, because we need sudo for running the website on HTTP port 80. Also rebooting the machine can be an option here, but not needed.
 
+The celery framework needs a message broker: redis or rabbitMQ are one of those.
+
+Installing redis:
+```
+    $ sudo apt-get install redis
+    $ sudo pip3 install redis
+```
+
+## Running the application
+
+After all those required packages installed, we need to run a celery worker. Enter the app folder and execute:
+```
+    $ sudo celery -A temp_website -l info -n worker
+```
+
+Run the django project from the app folder with:
+```
+    $ sudo python3 manage.py runserver ip:80
+```
