@@ -10,7 +10,7 @@ The Django framework helps creating a quick web server and Celery is a Distribut
 
 ## Getting Started
 
-## Installing
+### Installing
 
 This project uses django and celery, therefore the raspberry pi machine should have those installed. I recommend running them on python3. 
 
@@ -49,7 +49,7 @@ Installing redis:
     $ sudo pip3 install redis
 ```
 
-## Running the application
+### Running the application
 
 After all those required packages installed, we need to run a celery worker. Enter the app folder and execute:
 ```
