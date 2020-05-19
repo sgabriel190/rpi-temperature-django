@@ -55,8 +55,23 @@ After all those required packages installed, we need to run a celery worker. Ent
 ```
     $ sudo celery -A temp_website -l info -n worker
 ```
+If you consider usefull runing more than one worker on the machine, it is possible. Just run the previous command with a different name in the "-n" argument. The workers will automatically syncronize.
 
 Run the django project from the app folder with:
 ```
     $ sudo python3 manage.py runserver ip:80
 ```
+
+The ip bit in the command should be the local ip of the machine you are running this app on.
+
+## Acknowledged problems
+
+Using this build is resource demanding, it may be not optimal to be run on a Raspberry Pi Zero W as the response times can be high.
+
+Also using the multiprocessing tool on a single threaded computer doesn't bring the best result.
+
+## Resources and references
+
+[Django documentation](https://towardsdatascience.com/image-panorama-stitching-with-opencv-2402bde6b46c)
+
+[Celery documentation](https://docs.celeryproject.org/en/stable/)
