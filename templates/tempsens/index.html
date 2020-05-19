@@ -24,8 +24,8 @@
         <article>
         <p>{{ string }}</p>
             <p id="local_temperature">Temperature: {% if temperature %} {{ temperature }} {% endif %} </p>
-            <p id="local_humidity">Humidity:{% if humidity %} {{ humidity }} {% endif %} </p>
-            <p id="local_time">Time:{% if local_time %} {{ local_time }} {% endif %}</p>
+            <p id="local_humidity">Humidity: {% if humidity %} {{ humidity }} {% endif %} </p>
+            <p id="local_time"></p>
             <form action="/tempsens/disable_led/" method="get">
                 <input type="submit" value="Disable led">
             </form>
@@ -36,6 +36,7 @@
         <p>&copy;Django web application - Temperature sensor</p>
     </footer>
     <script>
+        getCurrentTime();
         setInterval(getCurrentTime, 1000);
         setInterval(getTemperatureValue, 5000);
     </script>
