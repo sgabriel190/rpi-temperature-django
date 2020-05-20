@@ -9,6 +9,10 @@ The Django framework helps creating a quick web server and Celery is a Distribut
 
 ## Getting Started
 
+### Setup the breadboard and I/O pins
+
+
+
 ### Installing
 
 This project uses django and celery, therefore the raspberry pi machine should have those installed. I recommend running them on python3. 
@@ -25,11 +29,16 @@ Check if you have python3 installed by running in command line:
     >>>quit()
 ```
 
-The first command should run the python3 interpretor, if it exists, then the quit() method exits it.
+This command should run the python3 interpretor, if it exists, then the quit() method exits it.
 
-If not found, installing the python3 interpretor is not hard:
+If not found, installing the python3 interpretor should be easy:
 ```
     $ sudo apt-get install python3
+```
+
+Let's not forget about the module for the temperature sensor to help it get data from environment.
+```
+    $ sudo pip3 install Adafruit_DHT
 ```
 
 With those installed, proceed to install django and celery:
@@ -72,9 +81,11 @@ Browse to /temp_website/settings.py and add your ip address to the ALLOWED_HOSTS
 
 ## Acknowledged problems
 
-Using this build is resource demanding, it may be not optimal to be run on a Raspberry Pi Zero W as the response times can be high.
+- Using this build is resource demanding, it may be not optimal to be run on a Raspberry Pi Zero W as the response times can be high.
 
-Also using the multiprocessing tool on a single threaded computer doesn't bring the best result.
+- Also using the multiprocessing tool on a single threaded computer doesn't bring the best result.
+
+- The sensor is a cheap version and even if it displays precision of one(one decimal digit), the measure isn't that precise.
 
 ## Resources and references
 
