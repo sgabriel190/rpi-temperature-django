@@ -5,7 +5,13 @@ This application runs on a Raspberry Pi Zero W and a breadboard. The sensor data
 
 This project can be ported to other Raspberry Pi machines with more hardware resources if needed. 
 
-The django framework helps in creating a quick web server. As described by the developer himself, celery is a distributed task queue, which helps the server-side tasks to be asynchronous, while boosting its response time
+The django framework helps in creating a quick web server. As described by the developer himself, celery is a distributed task queue, which helps the server-side tasks to be asynchronous, while boosting its response time.
+
+Each time the web client accesses the application, it updates the data and I find it useful to have control over the LED.
+
+For client-side, the layout is based on static files(css, images, and javascript) and a template html file. Those files can be found and modified in /templates/tempsens/ for templates and /static/tempsens/ for static files.
+
+The javascript used on the HTTP client contains 2 functions. One of those updates the time based on the local machine time. The second function uses jQuery to update the page DOM asynchronous with data from the server.
 
 ## Getting Started
 
@@ -88,6 +94,40 @@ Returns 127.0.0.1 on machines having the hostname in /etc/hosts as 127.0.0.1.
 
 
 Browse to /temp_website/settings.py and add your IPv4 address to the ALLOWED_HOSTS list.
+
+## Change I/O pins settings
+
+All the Raspberry Pi settings and functionalities are included into the /tempsens/tasks.py script.
+
+```
+	import Adafruit_DHT
+	import RPi.GPIO as GPIO
+
+	# Pin defining and board mode
+	GPIO.setmode(GPIO.BOARD)
+	sensor = Adafruit_DHT.DHT11
+	pin = 4
+	led = 13
+	GPIO.setup(led, GPIO.OUT)
+```
+
+This code part sets up all the Raspberry Pi ports for the application.
+
+## Changing the temperature threshold
+
+As some of you want to change the temperature threshold, it is possible. The value is hardcoded into one of the Celery tasks. Go to /tempsens/tasks.py and edit the following task:
+
+```
+	# This function checks the threshold temperature and lights up an led
+	@shared_task
+	def checkTemperature(temperature, humidity, led):
+		if(temperature < 21):
+			GPIO.output(led, 0)
+		else:
+			GPIO.output(led, 1)
+```
+
+The function takes a decision based on the temperature and if it's below 21 then the led lights up. The led turns off otherwise.
 
 ## Acknowledged problems
 
