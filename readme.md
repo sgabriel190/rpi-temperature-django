@@ -14,12 +14,12 @@ The Django framework helps creating a quick web server and Celery is a Distribut
 ![Raspberry pi setup](https://i.ibb.co/qJShbz9/Annotation-2020-05-21-114706.jpg)
 
 The setup for this project is simple. As it is displayed above, the electronic parts you need for this are: 
-*Raspberry Pi(any version) 
-*one led
-*one DHT11 module
-*2 resistors(1k and 10k ohm)
-*4 male/female wires 
-*4 male/male wires for breadboard connection.
+- Raspberry Pi(any version) 
+- one led
+- one DHT11 module
+- 2 resistors(1k and 10k ohm)
+- 4 male/female wires 
+- 4 male/male wires for breadboard connection.
 
 ### Installing
 
