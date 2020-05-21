@@ -5,7 +5,7 @@ This application runs on a Raspberry Pi Zero W and a breadboard. The sensor data
 
 This project can be ported to other Raspberry Pi machines with more hardware resources if needed. 
 
-The Django framework helps creating a quick web server and Celery is a Distributed Task Queue as the developer himself calls it, which helps the server-side tasks to be asynchronous and boost its response time.
+The django framework helps in creating a quick web server. As described by the developer himself, celery is a distributed task queue, which helps the server-side tasks to be asynchronous, while boosting its response time
 
 ## Getting Started
 
@@ -23,9 +23,9 @@ The setup for this project is simple. As it is displayed above, the electronic p
 
 ### Installing
 
-This project uses django and celery, therefore the raspberry pi machine should have those installed. I recommend running them on python3. 
+The language used in this project is python3. The raspberry pi machine requires Django and Celery installed.
 
-First, you need to make sure the machine is updated, for this run in a terminal those commands:
+First, you need to make sure the machine is updated. Run the following commands in the terminal to update the machine:
 ```
     $ sudo apt-get update
     $ sudo apt-get upgrade
@@ -39,12 +39,12 @@ Check if you have python3 installed by running in command line:
 
 This command should run the python3 interpreter, if it exists, then the quit() method exits it.
 
-If not found, installing the python3 interpreter should be easy:
+If not found, install python 3 with the following command:
 ```
     $ sudo apt-get install python3
 ```
 
-Let's not forget about the module for the temperature sensor to help it get data from environment.
+The temperature sensor requires a module for picking up the temperature in the environment.
 ```
     $ sudo pip3 install Adafruit_DHT
 ```
@@ -55,7 +55,7 @@ With those installed, proceed to install django and celery:
     $ sudo pip3 install celery
 ```
 
-I recommend installing those with sudo privileges, because we need sudo for running the website on HTTP port 80. Also rebooting the machine can be an option here, but not needed.
+I recommend installing those with sudo privileges, because we need sudo for running the website on HTTP port 80. Rebooting the machine is an option here, but it is not usually necessary.
 
 The celery framework needs a message broker: redis or rabbitMQ are one of those.
 
@@ -67,23 +67,25 @@ Installing redis:
 
 ### Running the application
 
-After all those required packages installed, we need to run a celery worker. Enter the app folder and execute:
+After the packages are installed, the celery worker is ready to run. Enter the app folder and execute:
 ```
     $ sudo celery -A temp_website -l info -n worker
 ```
-If you consider usefull runing more than one worker on the machine, it is possible. Just run the previous command with a different name in the "-n" argument. The workers will automatically syncronize.
+It is possible to have more than one worker on the machine. Run the previous command with a different number name for the “-n” argument. The workers will automatically synchronize. 
 
 Run the django project from the app folder with:
 ```
     $ sudo python3 manage.py runserver ip:80
 ```
 
-The ip bit in the command should be the local IPv4 of the machine you are running this app on. If it is hard to find out your local network IPv4 run those command (returns 127.0.0.1 on machines having the hostname in /etc/hosts as 127.0.0.1):
+The ip bit in the command should be the local IPv4 of the machine you are running this app on. If it is hard to find out your local network IPv4 run these commands:
 ```
     $ python3
     >>>import socket
     >>>socket.gethostbyname_ex(socket.gethostname())[-1][-1]
 ```
+Returns 127.0.0.1 on machines having the hostname in /etc/hosts as 127.0.0.1.
+
 
 Browse to /temp_website/settings.py and add your IPv4 address to the ALLOWED_HOSTS list.
 
@@ -91,9 +93,9 @@ Browse to /temp_website/settings.py and add your IPv4 address to the ALLOWED_HOS
 
 - Using this build is resource demanding, it may be not optimal to be run on a Raspberry Pi Zero W as the response times can be high.
 
-- Also using the multiprocessing tool on a single threaded computer doesn't bring the best result.
+- Using the multiprocessing tool on a single threaded computer doesn't bring the best result.
 
-- The sensor is a cheap version and even if it displays precision of one(one decimal digit), the measure isn't that precise.
+- The sensor is a cheap version and even if it displays precision of one(one decimal digit), the measure isn't precise.
 
 ## Resources and references
 
