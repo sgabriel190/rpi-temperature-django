@@ -9,7 +9,7 @@ The django framework helps in creating a quick web server. As described by the d
 
 Each time the web client accesses the application, it updates the data and I find it useful to have control over the LED.
 
-For client-side, the layout is based on static files(css, images, and javascript) and a template html file. Those files can be found and modified in /templates/tempsens/ for templates and /static/tempsens/ for static files.
+For client-side, the layout is based on static files(css, images, and javascript) and a template html file. Those files can be found and modified in `/templates/tempsens/` for templates and `/static/tempsens/` for static files.
 
 The javascript used on the HTTP client contains 2 functions. One of those updates the time based on the local machine time. The second function uses jQuery to update the page DOM asynchronous with data from the server.
 
@@ -43,7 +43,7 @@ Check if you have python3 installed by running in command line:
     >>>quit()
 ```
 
-This command should run the python3 interpreter, if it exists, then the quit() method exits it.
+This command should run the python3 interpreter, if it exists, then the `quit()` method exits it.
 
 If not found, install python 3 with the following command:
 ```
@@ -90,14 +90,14 @@ The ip bit in the command should be the local IPv4 of the machine you are runnin
     >>>import socket
     >>>socket.gethostbyname_ex(socket.gethostname())[-1][-1]
 ```
-Returns 127.0.0.1 on machines having the hostname in /etc/hosts as 127.0.0.1.
+Returns 127.0.0.1 on machines having the hostname in `/etc/hosts` as 127.0.0.1.
 
 
-Browse to /temp_website/settings.py and add your IPv4 address to the ALLOWED_HOSTS list.
+Browse to `/temp_website/settings.py` and add your IPv4 address to the `ALLOWED_HOSTS` list.
 
 ## Change I/O pins settings
 
-All the Raspberry Pi settings and functionalities are included into the /tempsens/tasks.py script.
+All the Raspberry Pi settings and functionalities are included into the `/tempsens/tasks.py` script.
 
 ```
 	import Adafruit_DHT
@@ -115,7 +115,7 @@ This code part sets up all the Raspberry Pi ports for the application.
 
 ## Changing the temperature threshold
 
-As some of you want to change the temperature threshold, it is possible. The value is hardcoded into one of the Celery tasks. Go to /tempsens/tasks.py and edit the following task:
+As some of you want to change the temperature threshold, it is possible. The value is hardcoded into one of the Celery tasks. Go to `/tempsens/tasks.py` and edit the following task:
 
 ```
 	# This function checks the threshold temperature and lights up an led
