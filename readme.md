@@ -11,7 +11,7 @@ The Django framework helps creating a quick web server and Celery is a Distribut
 
 ### Setup the breadboard and I/O pins
 
-
+![Raspberry pi setup](https://i.ibb.co/qJShbz9/Annotation-2020-05-21-114706.jpg)
 
 ### Installing
 
