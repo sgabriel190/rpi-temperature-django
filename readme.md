@@ -75,7 +75,7 @@ Installing redis:
 
 After the packages are installed, the celery worker is ready to run. Enter the app folder and execute:
 ```
-    $ sudo celery -A temp_website -l info -n worker
+    $ sudo celery -A temp_website worker -l info -n worker
 ```
 It is possible to have more than one worker on the machine. Run the previous command with a different name for the “-n” argument. The workers will automatically synchronize. 
 
